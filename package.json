@@ -1,0 +1,20 @@
+{
+  "name": "angular-cz-courseware-exercises",
+  "version": "0.0.1",
+  "description": "examples for tool angular-cz-courseware",
+  "main": "index.js",
+  "scripts": {
+    "start" : "gulp start",
+    "devel" : "courseware devel",
+    "build" : "courseware build",
+
+    "devel-courseware" : "courseware devel-devel"
+  },
+  "author": "angular@angular.cz",
+  "license": "ISC",
+  "devDependencies": {
+    "angular-cz-courseware": "git+https://bitbucket.org/angular_cz/course-ware.git",
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.0"
+  }
+}

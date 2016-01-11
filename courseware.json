@@ -1,0 +1,10 @@
+{
+  "introFile": "courseware-intro.jade",
+  "header": "CourseWare exercises example",
+  "todoFile": "todo.jade",
+  "todoFilePath": "complete",
+  "todos": [
+    "01-simple-example",
+    "02-tests-example"
+  ]
+}
