@@ -1,6 +1,6 @@
 {
   "introFile": "courseware-intro.jade",
-  "header": "CourseWare usage DEMO",
+  "header": "CourseWare exercise materials processor DEMO",
   "todoFile": "todo.jade",
   "todoFilePath": "complete",
   "todos": [
