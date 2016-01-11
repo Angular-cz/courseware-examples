@@ -1,3 +1,203 @@
-h2 Welcome to the example of courseware usage
+h2 Welcome to the example of CourseWare usage
 
-p.well you can use
+p There are prepared two exercises
+
+ul
+  li #[strong 01-simple-generator] - which shows ordinary instructions with common components
+  li #[strong 02-generator-with-tests] - utilize test resutls visualization
+
+h2 Structure
+p CourseWare is ment to provide documentation of existing exercises.
+
+p Typical structure of exercise can look like those exercises
+ul
+  li in the exercise folder there is html and some code to edit
+  li there is also folder named #[strong complete] which contains complete code
+  li and in that folder you can see #[strong todo.jade] its instructions for the exercise which will be used by CourseWare
+
+snippet.
+  |- 01-simple-generator
+     |- complete
+     |  |- app.js
+     |  |- index.html
+     |  |- todo.jade <------ instructions which is used by CourseWare
+     |
+     |- app.js
+     |- index.html
+
+h3 Configuration file
+
+p CourseWare is looking for file #[strong courseware.json], config file for this DEMO looks like that
+
+snippet.
+  {
+    "introFile": "courseware-intro.jade",
+    "header": "CourseWare usage DEMO",
+    "todoFile": "todo.jade",
+    "todoFilePath": "complete",
+    "todos": [
+      "01-simple-generator",
+      "02-generator-with-tests"
+    ]
+  }
+
+p Properties of #[strong courseware.json]
+ul
+  li #[strong introFile]: file with instructions for the homepage - this page
+  li #[strong header]: the text on the top of materials
+  li #[strong todoFile]: which file should be used as exercise instructions
+  li #[strong todoFilePath]: relative path to the #[strong todoFile] in exercise folder
+  li #[strong todos]: ordered list of folders with exercises - folder name is also exercise name
+
+p CourseWare then generates materials, use the given intro file as homepage, prepares list of exercises with instructions and let them be opened with #[strong Open Exercise] button
+
+h2 CourseWare templates
+
+p You can write instructions for CourseWare using
+  a(href="http://jade-lang.com/", target="_blank")  Jade
+  |  it is more comfortable as using plain HTML, have a small look on.
+
+p You will mostly use ordinary tags:
+ul
+  li #[strong p] - paragraphs
+  li #[strong ul li ] - unordered lists
+  li #[strong h2 - hx] - headers
+
+ul
+  li Do not forget that every line begins with tag, if you doesn't want to interpret the block use:
+    ul
+      li #[strong .] for block
+      li #[strong |] for single line
+
+p When you want to use text emphasis like #[strong strong] or #[em em] inline instead of separate tag, you can utilize the jade syntay
+
+snippet.
+  &#35;[strong strong text]
+  &#35;[em emphasis text]
+
+h3 Bootstrap
+
+p CourseWare use Twitter
+  a(href="http://bootstrap.com", target="_blank")  Bootstrap
+  | , and so can you, you can use ordinary Bootstrap classes
+
+h4 Well
+
+p Well ... commonly used class is #[strong well]
+
+snippet.
+  div.well The well can be really deep ... Alice
+
+div.well The well can be really deep ... Alice
+
+h4 Alerts
+
+p CourseWare prepares styles #[strong info, alert, success, warning] which reffers to Bootstrap alert styles.
+
+p Instead of
+
+snippet.
+  div.info.alert-info Info
+
+p You can write simlified styles
+
+snippet.
+  div.info Info
+  div.success Success
+  div.warning Warning
+  div.danger Danger
+
+p And the result ...
+
+div.info Info
+div.success Success
+div.warning Warning
+div.danger Danger
+
+h3 Courseware components
+p CourseWare provides several components for the instructions to be more interactive
+
+h4 hint
+
+p When you need to allow some hint you can utilize **hint** element
+ul
+  li It is hidden by default and can be chown by click.
+  li You can see it as enhancement #[strong .info] class
+
+snippet.
+  hint This is small hint for the exercise
+  div.info This is just info
+
+p See the difference
+
+hint This is small hint for the exercise
+div.info This is just info alert
+
+h4 snippet
+
+p When you need to show some code content, the #[strong snipped] is just for you.
+ul
+  li As opposite to usning #[strong well] it has monospaced font
+
+snippet.
+  snippet.
+    function generator(initialValue) {
+
+      return function() {
+        return initialValue++;
+      };
+    }
+
+p Becomes
+
+snippet.
+  var gen1 = generator(0);
+
+  console.log(gen1());
+  console.log(gen1());
+  console.log(gen1());
+
+p Notice the dot at the and of snipped, which tells jade that this is block
+
+h4 solution
+
+p You can provide also solutions in your todo instructions by using #[strong solution]
+
+ul
+  li it is hidden by default and you can show it by clicking
+  li you can see it as complement to #[strong snippet]
+
+snippet.
+  solution.
+    function generator(initialValue) {
+
+      return function() {
+        return initialValue++;
+      };
+    }
+
+p Becomes hidden block with link #[strong Show solution] on the right side
+
+solution.
+  function generator(initialValue) {
+
+    return function() {
+      return initialValue++;
+    };
+  }
+
+h4 Escaping
+p When you have HTML in #[strong solution, snippet] or in ordinary text, you should escape it.
+ul
+  li use #[strong :escape] for HTML
+  li use #[strong :escape_ng] for snippetw which use handle bars curly braces
+    :escape_ng  {{}}
+
+snippet
+  :escape
+    snippet
+      :escape
+        <html>tags</html>
+snippet
+  :escape
+    <html>tags</html>
