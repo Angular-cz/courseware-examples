@@ -4,6 +4,7 @@
   "description": "examples for tool angular-cz-courseware",
   "main": "index.js",
   "scripts": {
+    "postinstall" : "courseware build",
     "start": "gulp",
     "devel": "courseware devel",
     "build": "courseware build",
