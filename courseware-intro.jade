@@ -1,29 +1,59 @@
 h2 Welcome to the example of CourseWare usage
 
-p There are prepared two exercises
+p There are prepared two simple Javascript exercises, try them to get the experience of using Courseware
 
 ul
-  li #[strong 01-simple-generator] - which shows ordinary instructions with common components
-  li #[strong 02-generator-with-tests] - utilize test resutls visualization
+  li #[strong 01-simple-generator]
+  li #[strong 02-generator-with-tests]
+
+p
+  | The first one wants you just follow the instruction, edit javascript file and check result in browser.
+
+p
+  | In the second one, you doesn't need to open browser, because you are writing exercise against tests and
+  | CourseWare can also visualise their results
 
 h2 Structure
-p CourseWare is ment to provide documentation of existing exercises.
+p
+ | CourseWare is meant to provide documentation of existing exercises,
+ |  the most benefits will come when you use it on javascript lectures.
+ |  But it can serve also as platform independent documentation tool, because it produces single #[strong index.html] file
 
-p Typical structure of exercise can look like those exercises
+p So if we speak about Javascript course, typical structure of exercise can look like those exercises - don't hasitate to examine code
 ul
-  li in the exercise folder there is html and some code to edit
-  li there is also folder named #[strong complete] which contains complete code
-  li and in that folder you can see #[strong todo.jade] its instructions for the exercise which will be used by CourseWare
+  li Exercises package has ussualy it own http-server which serves the content, same as this demo package
+  li Also it can provide capability for running tests
+
+ul
+  li Every exercise has its own folder when there is html to run and some code to edit
+  li There is also folder named #[strong complete] which contains complete code
+  li You can have there configuration for karma runner #[strong karma.conf.js]
+  li And least but not last you need some instructions, in our case written in jade.
+
+p Structure then can look like this
 
 snippet.
   |- 01-simple-generator
-     |- complete
-     |  |- app.js
-     |  |- index.html
-     |  |- todo.jade <------ instructions which is used by CourseWare
-     |
-     |- app.js
-     |- index.html
+  |- 02-generator-with-tests
+  |  |- complete
+  |  |  |- app.js
+  |  |  |- index.html
+  |  |  |- todo.jade
+  |  |
+  |  |- app.js
+  |  |- index.html
+  |  |- karma.conf.js
+  |
+  |- gulpfile.js
+  |- package.json
+
+p
+  | Students are then supposed to clone and install packge, start it, do the exercise according to
+  |  instructions and they can check the results in his browser.
+
+p
+  | So if you need to generate instructions for students, CourseWare can help you with that, you just need to tell it
+  | which exercises it should document and where they have the instructions.
 
 h3 Configuration file
 
@@ -201,3 +231,4 @@ snippet
 snippet
   :escape
     <html>tags</html>
+
