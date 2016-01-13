@@ -63,17 +63,18 @@ h3 Configuration file
 
 p CourseWare is looking for file #[strong courseware.json], config file for this DEMO looks like that
 
-snippet.
-  {
-    "introFile": "courseware-intro.jade",
-    "header": "CourseWare usage DEMO",
-    "todoFile": "todo.jade",
-    "todoFilePath": "complete",
-    "todos": [
-      "01-simple-generator",
-      "02-generator-with-tests"
-    ]
-  }
+snippet
+  :highlight-json
+    {
+      "introFile": "courseware-intro.jade",
+      "header": "CourseWare usage DEMO",
+      "todoFile": "todo.jade",
+      "todoFilePath": "complete",
+      "todos": [
+        "01-simple-generator",
+        "02-generator-with-tests"
+      ]
+    }
 
 p Properties of #[strong courseware.json]
 ul
@@ -230,5 +231,72 @@ snippet
 snippet
   :escape
     <html>tags</html>
+
+h4 Highlight
+p For highlighted source code, you can use :higlight filters. Filters use&nbsp;
+  a(href='https://github.com/isagalaev/highlight.js') highlight.js
+  | &nbsp;library.
+ul
+  li use #[strong :higlight] highlight with language autodetencion
+  li use #[strong :higlight-js] for JavaScript
+  li use #[strong :higlight-json] for json code
+  li use #[strong :higlight-html] or #[strong :higlight-xml] for html and xml code
+
+snippet
+  :escape
+    snippet
+      :highlight
+        <html>tags</html>
+snippet
+  :highlight
+    <html>tags</html>
+
+snippet
+  :escape
+    snippet
+      :highlight
+        function someFunction(some value) {
+          return 42;
+        }
+
+snippet
+  :highlight
+    function someFunction(some value) {
+      return 42;
+    }
+
+snippet
+  :escape
+    snippet
+      :highlight-js
+        function someFunction(some value) {
+          return 42;
+        }
+
+snippet
+  :highlight-js
+    function someFunction(some value) {
+      return 42;
+    }
+
+snippet
+  :escape
+    snippet
+      :highlight-json
+        {
+          "js": "javascript",
+          "json": "json",
+          "xml": "xml",
+          "html": "html"
+        }
+
+snippet
+  :highlight-json
+    {
+      "js": "javascript",
+      "json": "json",
+      "xml": "xml",
+      "html": "html"
+    }
 
 h2 Test results visualization

@@ -4,7 +4,7 @@
   "description": "examples for tool angular-cz-courseware",
   "main": "index.js",
   "scripts": {
-    "postinstall" : "courseware build",
+    "postinstall": "courseware build",
     "start": "gulp",
     "devel": "courseware devel",
     "build": "courseware build",
@@ -26,5 +26,9 @@
     "karma-story-reporter": "^0.3.1",
     "phantomjs": "^1.9.19",
     "serve-static": "^1.10.0"
+  },
+  "dependencies": {
+    "karma-json-all-reporter": "^0.1.1",
+    "karma-json-reporter": "^1.2.0"
   }
 }

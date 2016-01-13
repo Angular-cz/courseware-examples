@@ -5,8 +5,7 @@ module.exports = function(config) {
   config.set({
 
     frameworks: ['jasmine'],
-    files: [
-    ],
+    files: [],
 
     exclude: [
       'karma.conf.js'
@@ -15,7 +14,8 @@ module.exports = function(config) {
     plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine',
-      'karma-story-reporter'
+      'karma-story-reporter',
+      'karma-json-all-reporter'
     ],
 
     reporters: ['story'],
@@ -36,12 +36,13 @@ module.exports = function(config) {
   // reporter which is needed for courseware
   config.plugins.push('karma-spec-json-reporter');
   config.reporters.push('specjson');
+  config.reporters.push('json-all');
 
   var courseware = require("angular-cz-courseware");
 
   var testResultsDir = courseware.getTestResultsDir();
 
-  if (!fs.existsSync(testResultsDir)){
+  if (!fs.existsSync(testResultsDir)) {
     fs.mkdirSync(testResultsDir);
     console.log('Directory for test results has been created: ' + testResultsDir);
   }
@@ -52,4 +53,9 @@ module.exports = function(config) {
   config.specjsonReporter = {
     outputFile: outPath
   };
+
+  config.jsonAllReporter= {
+    outputFile: outPath + '-all', // results will be saved as json-all-results.json
+  };
+
 };
