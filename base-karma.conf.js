@@ -40,6 +40,7 @@ module.exports = function(config) {
 
   var courseware = require("angular-cz-courseware");
 
+  // ensure that directory exists
   var testResultsDir = courseware.getTestResultsDir();
 
   if (!fs.existsSync(testResultsDir)) {
@@ -47,6 +48,7 @@ module.exports = function(config) {
     console.log('Directory for test results has been created: ' + testResultsDir);
   }
 
+  // get filename for exercise
   var exerciseName = courseware.determineExerciseName(config);
   var outPath = courseware.getTestResultsFilename(exerciseName);
 

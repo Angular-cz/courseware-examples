@@ -18,10 +18,13 @@ gulp.task('connect', ['initialize-tests'], function(cb) {
   app.use(serveStatic('./'));
 
   var server = app.listen(config.httpServer.port);
+
+  // connect test results visualization socket server
   courseware.socketServer(server);
   cb();
 });
 
+// initialize tests results json files
 gulp.task('initialize-tests', function(cb) {
   var currentKarmaServer = require("karma").Server;
   courseware.initializeTestResults(currentKarmaServer, cb);

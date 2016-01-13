@@ -19,9 +19,9 @@ p
 
 h2 Structure
 p
- | CourseWare is meant to provide documentation of existing exercises,
- |  the most benefits will come when you use it on javascript lectures.
- |  But it can serve also as platform independent documentation tool, because it produces single #[strong index.html] file
+  | CourseWare is meant to provide documentation of existing exercises,
+  |  the most benefits will come when you use it on javascript lectures.
+  |  But it can serve also as platform independent documentation tool, because it produces single #[strong index.html] file
 
 p So if we speak about Javascript course, typical structure of exercise can look like those exercises - don't hasitate to examine code
 ul
@@ -223,11 +223,12 @@ ul
   li use #[strong :escape_ng] for snippetw which use handle bars curly braces
     :escape_ng  {{}}
 
-snippet
-  :escape
-    snippet
-      :escape
-        <html>tags</html>
+pre
+  code
+    | snippet
+    |   :escape
+    |     <html>tags</html>
+
 snippet
   :escape
     <html>tags</html>
@@ -245,8 +246,8 @@ ul
 snippet
   :escape
     snippet
-      :highlight
-        <html>tags</html>
+    :highlight
+    <html>tags</html>
 snippet
   :highlight
     <html>tags</html>
@@ -254,10 +255,10 @@ snippet
 snippet
   :escape
     snippet
-      :highlight
-        function someFunction(some value) {
-          return 42;
-        }
+    :highlight
+    function someFunction(some value) {
+      return 42;
+    }
 
 snippet
   :highlight
@@ -268,10 +269,10 @@ snippet
 snippet
   :escape
     snippet
-      :highlight-js
-        function someFunction(some value) {
-          return 42;
-        }
+    :highlight-js
+    function someFunction(some value) {
+      return 42;
+    }
 
 snippet
   :highlight-js
@@ -282,13 +283,13 @@ snippet
 snippet
   :escape
     snippet
-      :highlight-json
-        {
-          "js": "javascript",
-          "json": "json",
-          "xml": "xml",
-          "html": "html"
-        }
+    :highlight-json
+    {
+      "js": "javascript",
+      "json": "json",
+      "xml": "xml",
+      "html": "html"
+    }
 
 snippet
   :highlight-json
@@ -300,3 +301,163 @@ snippet
     }
 
 h2 Test results visualization
+
+p.
+  If you want your students to write code against tests, its possible to integrate this also with CourseWare.
+  Look at second exercises which leeds you to work against tests and visualize your progress.
+
+p.
+  You can see that there is utilized an #[strong tests] component which let you to show test results of your tests.
+
+h3 tests
+
+p.
+  This component analyze results and try to find information that some tests are associated with some todo,
+  you can do that by #[strong todo] parameter
+
+snippet.
+  tests(todo='1.1')
+
+p.
+  Test message has to contain string with todo identification #[strong (TODO 1.1)].
+  This string can be containd in name or in the suit name. There can be also multiple messages that contains given todo.
+
+div.tests.failed
+  h4
+    span.icon
+    |  1 / 3
+
+  ul
+    li.passed
+      span.icon
+      |  Generator should be definde(TODO 1.1)
+    li.passed
+      span.icon
+      |  Generator has to return value (TODO 1.1)
+    li.failed
+      span.icon
+      |  Returned value of the generator has to be increased (TODO 1.1)
+
+p This visualization is dynamic and shows the current status of tests, you have to understand several things to get this to work
+
+h3 Test results reports
+
+p Test results visualization needs json report to be results saved as json in format of #[strong karma-spec-json-reporter]
+
+p See its documentation
+  a(target="_blank", href = "https://www.npmjs.com/package/karma-spec-json-reporter")  karma-spec-json-reporter npm package
+
+h3 Configuration of test results visualization
+
+p
+  | In configuration you have to specify the socket where CourseWare listens about test-results changes and the
+  | directory where test-results will be stored.
+
+snippet.
+  "testsSocketUrl" : "http://localhost:8000",
+  "testsResultsPath" : "test-results"
+
+ul
+  li #[strong testsSocketUrl]: socket url when where CourseWare will listen
+  li #[strong testsResultsPath]: folder where your tests-results will be stored and CourseWare socket server will look there.
+
+h3 Socket server
+
+p.
+  CourseWare provides you capability to watch test results path and notify application.
+  You can use this in your host package and connect it to your http server.
+
+ul
+  li See this package and its #[strong gulpfile.js]
+
+snippet
+  :highlight
+    gulp.task('connect', ['initialize-tests'], function(cb) {
+
+      console.log("Http-server running on http://localhost:" + config.httpServer.port);
+
+      var app = connect();
+
+      app.use(serveStatic('./'));
+
+      var server = app.listen(config.httpServer.port);
+
+      // connect test results visualization socket server
+      courseware.socketServer(server);
+      cb();
+    });
+
+    // initialize tests results json files
+    gulp.task('initialize-tests', function(cb) {
+      var currentKarmaServer = require("karma").Server;
+      courseware.initializeTestResults(currentKarmaServer, cb);
+    });
+
+p.
+You can see here running socket server and initialization of tests by methods from courseware package.
+
+p.
+  The task #[strong initialize-tests] ensure that test results already exists before socket server is started,
+  for the watch to work reliable
+
+ul
+  li method which connects socket server to your server, watch test results path and send results to clients
+    snippet.
+      courseware.socketServer(server);
+
+  li
+    | method which check existence of #[strong karma.conf.js] in exercises and run them using karma server from host package,
+    |  reason of this is thata every package can have specific karma configurations.
+    |  if you do not use karma server, ommit this.
+    snippet.
+      courseware.initializeTestResults(currentKarmaServer, cb);
+
+h3 Karma integration
+
+p Probably you use some kind of test runner for your tests, so here you can see how it is integrated with popular Karma test runner
+
+snippet.
+  module.exports = function(config) {
+
+     ...
+
+      // reporter which is needed for courseware
+      config.plugins.push('karma-spec-json-reporter');
+      config.reporters.push('specjson');
+
+      var courseware = require("angular-cz-courseware");
+
+      // ensure that directory exists
+      var testResultsDir = courseware.getTestResultsDir();
+
+      if (!fs.existsSync(testResultsDir)){
+        fs.mkdirSync(testResultsDir);
+        console.log('Directory for test results has been created: ' + testResultsDir);
+      }
+
+      // get filename for exercise
+      var exerciseName = courseware.determineExerciseName(config);
+      var outPath = courseware.getTestResultsFilename(exerciseName);
+
+      config.specjsonReporter = {
+        outputFile: outPath
+      };
+  };
+
+p You can see that there is utilized reporter #[strong karma-spec-json-reporter] which reports test results to paritcular directory
+
+p Module courseware provides you several convenient methods for this configuration
+
+ul
+  li method for getting dir name where test results will appear
+    snippet.
+      var testResultsDir = courseware.getTestResultsDir(); // path/test-results
+
+  li method for creating filename from exercise name
+    snippet.
+      var outPath = courseware.getTestResultsFilename(exerciseName); // path/test-results/01-simple-generator.json
+
+  li method for determining exercise name from config, it tries to compare folder name where was karma runner started
+    | or location of configFile, this is crucial for IDE integration which sometimes cover the original configFile
+  snippet.
+    var exerciseName = courseware.determineExerciseName(config); // 01-simple-generator
