@@ -7,21 +7,21 @@ ul
   li #[strong 02-generator-with-tests]
 
 p
-  | The first one wants you just follow the instruction, edit javascript file and check result in browser.
+  The first one wants you just follow the instruction, edit javascript file and check result in browser.
 
-p
-  | In the second one, you doesn't need to open browser, because you are writing exercise against tests and
-  | CourseWare can also visualise their results
+p.
+  In the second one, you doesn't need to open browser, because you are writing exercise against tests and
+  CourseWare can also visualise their results
 
-p
-  | Look at them, try them, examine the package and all the information you can find in the text above.
-  | Because this intro page is not only introcuction to the course but also documentation and style galery, so enjoy :)
+p.
+  Look at them, try them, examine the package and all the information you can find in the text above.
+  Because this intro page is not only introcuction to the course but also documentation and style galery, so enjoy :)
 
 h2 Structure
-p
-  | CourseWare is meant to provide documentation of existing exercises,
-  |  the most benefits will come when you use it on javascript lectures.
-  |  But it can serve also as platform independent documentation tool, because it produces single #[strong index.html] file
+p.
+  CourseWare is meant to provide documentation of existing exercises,
+  the most benefits will come when you use it on javascript lectures.
+  But it can serve also as platform independent documentation tool, because it produces single #[strong index.html] file
 
 p So if we speak about Javascript course, typical structure of exercise can look like those exercises - don't hasitate to examine code
 ul
@@ -51,13 +51,13 @@ snippet.
   |- gulpfile.js
   |- package.json
 
-p
-  | Students are then supposed to clone and install packge, start it, do the exercise according to
-  |  instructions and they can check the results in his browser.
+p.
+  Students are then supposed to clone and install packge, start it, do the exercise according to
+  instructions and they can check the results in his browser.
 
-p
-  | So if you need to generate instructions for students, CourseWare can help you with that, you just need to tell it
-  | which exercises it should document and where they have the instructions.
+p.
+  So if you need to generate instructions for students, CourseWare can help you with that, you just need to tell it
+  which exercises it should document and where they have the instructions.
 
 h3 Configuration file
 
@@ -349,9 +349,9 @@ p See its documentation
 
 h3 Configuration of test results visualization
 
-p
-  | In configuration you have to specify the socket where CourseWare listens about test-results changes and the
-  | directory where test-results will be stored.
+p.
+  In configuration you have to specify the socket where CourseWare listens about test-results changes and the
+  directory where test-results will be stored.
 
 snippet.
   "testsSocketUrl" : "http://localhost:8000",
@@ -394,7 +394,7 @@ snippet
     });
 
 p.
-You can see here running socket server and initialization of tests by methods from courseware package.
+  You can see here running socket server and initialization of tests by methods from courseware package.
 
 p.
   The task #[strong initialize-tests] ensure that test results already exists before socket server is started,
@@ -461,3 +461,4 @@ ul
     | or location of configFile, this is crucial for IDE integration which sometimes cover the original configFile
   snippet.
     var exerciseName = courseware.determineExerciseName(config); // 01-simple-generator
+
