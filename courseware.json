@@ -5,7 +5,7 @@
   "todoFilePath": "complete",
   "todos": [
     "01-simple-generator",
-    "02-generator-with-tests"
+    "02-simple-generator-with-tests"
   ],
   "testsSocketUrl" : "http://localhost:8000",
   "testsResultsPath" : "test-results"

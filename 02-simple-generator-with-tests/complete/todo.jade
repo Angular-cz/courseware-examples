@@ -1,0 +1,72 @@
+div.well-lg.
+  In second example we will solve the same problem - generator. But now, we will be use TDD.
+
+h3 1 - Run tests
+p Open terminal and in examples project directory run command
+snippet.
+  npm run test-02
+
+ul
+  li tests will be run each file change
+  li all test result will be displayed on this page
+  li alternatively you can check tests results in terminal
+
+tests(todo="1")
+
+h3 2 - Implement the simple generator
+
+p.
+  You will try to utilize closure when implementing simple generator.
+
+
+h4 2.1 - Make it return a function
+ul
+  li if you look on the function named #[strong generator], it accepts single parameter (initialValue)
+  li according to the usage, it should return another function
+  li but currently its not - this is the reason of the error in console
+
+ul.task
+  li let #[strong generator] function return another function
+
+solution
+  :highlight-js
+    function generator(initialValue) {
+
+      return function() {
+
+      };
+    }
+
+tests(todo="2.1")
+
+h4 2.2 - Return and increase the value
+p It doesn't fail anymore, but there is no returned value
+
+ul.task
+  li return the increased value of #[strong initialValue]
+
+hint Use the postincrement - #[strong value]++
+
+solution
+  :highlight-js
+    function generator(initialValue) {
+
+        return function() {
+          return initialValue++;
+        };
+      }
+
+tests(todo="2.2")
+
+h3 3 - Check the results
+
+p All tests now passes! If you want, you can check results also in browser console.
+
+snippet.
+  0
+  1
+  2
+
+p.success Congratulations you have finished exercise
+
+

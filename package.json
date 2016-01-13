@@ -8,7 +8,7 @@
     "start": "gulp",
     "devel": "courseware devel",
     "build": "courseware build",
-    "test-02": "karma start 02-generator-with-tests/karma.conf.js",
+    "test-02": "karma start 02-simple-generator-with-tests/karma.conf.js",
     "courseware-devel": "courseware courseware-devel"
   },
   "author": "angular@angular.cz",
