@@ -243,36 +243,37 @@ ul
   li use #[strong :higlight-json] for json code
   li use #[strong :higlight-html] or #[strong :higlight-xml] for html and xml code
 
-snippet
-  :escape
-    snippet
-    :highlight
-    <html>tags</html>
-snippet
-  :highlight
-    <html>tags</html>
-
-snippet
-  :escape
-    snippet
-    :highlight
-    function someFunction(some value) {
-      return 42;
-    }
+pre
+  code
+    | snippet
+    |   :highlight
+    |     <html>tags</html>
 
 snippet
   :highlight
+    <html>tags</html>
+
+pre
+  code
+    | snippet
+    |   :highlight
+    |     function someFunction(some value) {
+    |       return 42;
+    |     }
+
+snippet
+  :highlight
     function someFunction(some value) {
       return 42;
     }
 
-snippet
-  :escape
-    snippet
-    :highlight-js
-    function someFunction(some value) {
-      return 42;
-    }
+pre
+  code
+    | snippet
+    |   :highlight-js
+    |      function someFunction(some value) {
+    |         return 42;
+    |      }
 
 snippet
   :highlight-js
@@ -280,16 +281,16 @@ snippet
       return 42;
     }
 
-snippet
-  :escape
-    snippet
-    :highlight-json
-    {
-      "js": "javascript",
-      "json": "json",
-      "xml": "xml",
-      "html": "html"
-    }
+pre
+  code
+    | snippet
+    |   :highlight-json
+    |     {
+    |       "js": "javascript",
+    |       "json": "json",
+    |       "xml": "xml",
+    |       "html": "html"
+    |      }
 
 snippet
   :highlight-json
