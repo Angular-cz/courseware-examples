@@ -13,7 +13,7 @@ ul
 
 tests(todo="1")
 
-h3 2 - Implement the simple generator
+h3 2 - Implement the simple generatorFactory
 
 p.
   You will try to utilize closure when implementing simple generator.
@@ -21,16 +21,16 @@ p.
 
 h4 2.1 - Make it return a function
 ul
-  li if you look on the function named #[strong generator], it accepts single parameter (initialValue)
+  li if you look on the function named #[strong generatorFactory], it accepts single parameter (initialValue)
   li according to the usage, it should return another function
   li but currently its not - this is the reason of the error in console
 
 ul.task
-  li let #[strong generator] function return another function
+  li let #[strong generatorFactory] function return another function
 
 solution
   :highlight-js
-    function generator(initialValue) {
+    function generatorFactory(initialValue) {
 
       return function() {
 
@@ -49,7 +49,7 @@ hint Use the postincrement - #[strong value]++
 
 solution
   :highlight-js
-    function generator(initialValue) {
+    function generatorFactory(initialValue) {
 
         return function() {
           return initialValue++;
@@ -60,13 +60,15 @@ tests(todo="2.2")
 
 h3 3 - Check the results
 
-tests-results(show-tests)
-  p If you want, you can check results also in browser console.
-  snippet.
-    # browser console output
-    0
-    1
-    2
+tests-results
+
+p If you want, you can check results also in browser console.
+
+snippet.
+  # browser console output
+  0
+  1
+  2
 
 
 
