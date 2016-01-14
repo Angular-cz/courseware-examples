@@ -307,6 +307,8 @@ p.
   If you want your students to write code against tests, its possible to integrate this also with CourseWare.
   Look at second exercises which leeds you to work against tests and visualize your progress.
 
+p This visualization is dynamic and shows the current status of tests, you have to understand several things to get this to work
+
 p.
   You can see that there is utilized an #[strong tests] component which let you to show test results of your tests.
 
@@ -316,30 +318,57 @@ p.
   This component analyze results and try to find information that some tests are associated with some todo,
   you can do that by #[strong todo] parameter
 
-snippet.
-  tests(todo='1.1')
-
 p.
   Test message has to contain string with todo identification #[strong (TODO 1.1)].
-  This string can be containd in name or in the suit name. There can be also multiple messages that contains given todo.
+  This string can be containd in name or in the suit name.
 
-div.tests.failed
-  h4
-    span.icon
-    |  1 / 3
 
-  ul
-    li.passed
-      span.icon
-      |  Generator should be definde(TODO 1.1)
-    li.passed
-      span.icon
-      |  Generator has to return value (TODO 1.1)
-    li.failed
-      span.icon
-      |  Returned value of the generator has to be increased (TODO 1.1)
+snippet.
+  tests
 
-p This visualization is dynamic and shows the current status of tests, you have to understand several things to get this to work
+div(ng-if="true",ng-init='tests = {"results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
+  include node_modules/angular-cz-courseware/jade/directives/tests
+
+snippet.
+  tests(todo="1")
+
+div(ng-if="true",ng-init='tests = {"results": { "total": 1, "passed": 0, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "FAILED" } ] } }')
+  include node_modules/angular-cz-courseware/jade/directives/tests
+
+snippet.
+  tests(todo="2")
+
+div(ng-if="true",ng-init='tests = {"results": { "total":3, "passed": 0, "tests": [ { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
+  include node_modules/angular-cz-courseware/jade/directives/tests
+div.note
+  | By default, todos are selected as hierarchy.
+  snippet.
+    tests(todo="2")           # displays tests with (TODO 2), (TODO 2.1), (TODO 2.1.1), (TODO 2.2) ...
+
+  | If you want select todo only if name is exactly same, use attribute #[strong exact]
+  snippet.
+    tests(todo="2", exact)    # displays tests with (TODO 2)
+
+  | For display tests without todos, use attribute #[strong without-todo]
+  snippet.
+    tests(without-todo)    # displays tests with (TODO 2)
+
+
+h3 tests-results
+p.
+  #[strong Tests-results] component is intended for summary. Can show or hide tests list
+
+snippet.
+  tests-results
+
+div(ng-if="true",ng-init='tests = {"showTests": true, "results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
+  include node_modules/angular-cz-courseware/jade/directives/tests-results
+
+snippet.
+  tests-results(titleOnly)
+
+div(ng-if="true",ng-init='tests = {"showTests": false, "results": { "total": 4, "passed": 1} }')
+  include node_modules/angular-cz-courseware/jade/directives/tests-results
 
 h3 Test results reports
 
