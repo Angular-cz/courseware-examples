@@ -68,8 +68,7 @@ snippet
     {
       "introFile": "courseware-intro.jade",
       "header": "CourseWare usage DEMO",
-      "todoFile": "todo.jade",
-      "todoFilePath": "complete",
+      "todoFilePath": "complete/todo.jade",
       "todos": [
         "01-simple-generator",
         "02-simple-generator-with-tests"
@@ -80,8 +79,7 @@ p Properties of #[strong courseware.json]
 ul
   li #[strong introFile]: file with instructions for the homepage - this page
   li #[strong header]: the text on the top of materials
-  li #[strong todoFile]: which file should be used as exercise instructions
-  li #[strong todoFilePath]: relative path to the #[strong todoFile] in exercise folder
+  li #[strong todoFilePath]: relative path to the instructions in exercise folder
   li #[strong todos]: ordered list of folders with exercises - folder name is also exercise name
 
 p CourseWare then generates materials, use the given intro file as homepage, prepares list of exercises with instructions and let them be opened with #[strong Open Exercise] button
@@ -90,19 +88,49 @@ h2 CourseWare templates
 
 p You can write instructions for CourseWare using
   a(href="http://jade-lang.com/", target="_blank")  Jade
-  |  it is more comfortable as using plain HTML, have a small look on.
-
-p You will mostly use ordinary tags:
-ul
-  li #[strong p] - paragraphs
-  li #[strong ul li ] - unordered lists
-  li #[strong h2 - hx] - headers
 
 ul
-  li Do not forget that every line begins with tag, if you doesn't want to interpret the block use:
-    ul
-      li #[strong .] for block
-      li #[strong |] for single line
+  li It is more comfortable as using plain HTML, have a small look on.
+  li Main idea is that you do not write xml, but just tags where indentation creates hierarchy.
+  li You can apply classes easily by just adding #[strong .classname] to the tag.
+  li Attributes can be added into parenthesis #[strong a(href=...)].
+
+p.
+  Examine source code of instructions in examples and you will know how to use it in a minute.
+
+h3 Common tags
+
+p You will mostly depend on ordinary tags:
+ul
+  li #[strong h2 - hx] - headers for maintaining your hierarchy
+  li #[strong p] - paragraphs for blocks of text
+  li #[strong ul li ] - unordered lists for separated ideas
+
+p
+  | When using #[strong ul li] you can emphasis several items by using class #[strong .task], its usefull for separating
+  | information from tasks.
+
+snippet.
+  ul
+    li simple information
+    li simple information
+    li.task task information
+
+ul
+  li simple information
+  li simple information
+  li.task task information
+
+p Do not forget that every line begins with tag, if you want jade to interpret the inner text as block use:
+  ul
+    li #[strong .] for block
+    li #[strong |] for single line
+
+snippet.
+  p.
+    Multiple line text
+    seperated just by new line
+
 
 p When you want to use text emphasis like #[strong strong] or #[em em] inline instead of separate tag, you can utilize the jade syntax
 
@@ -322,7 +350,6 @@ p.
   Test message has to contain string with todo identification #[strong (TODO 1.1)].
   This string can be containd in name or in the suit name.
 
-
 snippet.
   tests
 
@@ -345,7 +372,7 @@ div.note
   snippet.
     tests(todo="2")           # displays tests with (TODO 2), (TODO 2.1), (TODO 2.1.1), (TODO 2.2) ...
 
-  | If you want select todo only if name is exactly same, use attribute #[strong exact]
+  | If you want select todo only if name is exactly the same, use attribute #[strong exact]
   snippet.
     tests(todo="2", exact)    # displays tests with (TODO 2)
 
@@ -353,10 +380,9 @@ div.note
   snippet.
     tests(without-todo)    # displays tests with (TODO 2)
 
-
 h3 tests-results
 p.
-  #[strong Tests-results] component is intended for summary. Can show or hide tests list
+  #[strong Tests-results] component is intended for displaying summary. By default it shows all tests
 
 snippet.
   tests-results
@@ -364,8 +390,10 @@ snippet.
 div(ng-if="true",ng-init='tests = {"showTests": true, "results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
   include node_modules/angular-cz-courseware/jade/directives/tests-results
 
+p Tests can be hidden by using attribute #[strong title-only]
+
 snippet.
-  tests-results(titleOnly)
+  tests-results(title-only)
 
 div(ng-if="true",ng-init='tests = {"showTests": false, "results": { "total": 4, "passed": 1} }')
   include node_modules/angular-cz-courseware/jade/directives/tests-results

@@ -1,8 +1,7 @@
 {
   "introFile": "courseware-intro.jade",
   "header": "CourseWare exercise materials processor DEMO",
-  "todoFile": "todo.jade",
-  "todoFilePath": "complete",
+  "todoFilePath": "complete/todo.jade",
   "todos": [
     "01-simple-generator",
     "02-simple-generator-with-tests"
