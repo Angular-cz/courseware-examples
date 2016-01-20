@@ -41,3 +41,8 @@ CourseWare can also visualise their results
 
 Look at them, try to solve them, examine the package and all the information you can find on homepage text.
 Because intro page is not only introduction to the course but also style galery and documentation, so enjoy :)
+
+### CourseWare examples online
+
+Visit: https://angular-cz-courseware-examples.herokuapp.com
+
