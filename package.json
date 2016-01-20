@@ -15,7 +15,7 @@
   "author": "angular@angular.cz",
   "license": "ISC",
   "devDependencies": {
-    "angular-cz-courseware": "^0.1.0",
+    "angular-cz-courseware": "git+https://github.com/Angular-cz/courseware",
     "bootstrap": "^3.3.6",
     "connect": "^3.4.0",
     "gulp": "^3.9.0",
