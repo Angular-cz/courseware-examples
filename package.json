@@ -12,6 +12,7 @@
     "test-03": "karma start 03-sandbox/karma.conf.js",
     "courseware-devel": "courseware courseware-devel"
   },
+  "private" : true,
   "author": "angular@angular.cz",
   "license": "ISC",
   "devDependencies": {
