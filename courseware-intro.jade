@@ -1,10 +1,11 @@
 h2 Welcome to the example of CourseWare usage
 
-p There are prepared two simple Javascript exercises, try them to get the experience of using CourseWare
+p There are prepared two simple Javascript exercises, and one empty for your experiments, try them to get the experience of using CourseWare
 
 ul
   li #[strong 01-simple-generator]
-  li #[strong 02-simple-generator-with-tests]
+  li #[strong 02-generator-with-tests]
+  li #[strong 03-sandbox]
 
 p
   The first one wants you just follow the instruction, edit javascript file and check result in browser.
@@ -14,8 +15,8 @@ p.
   CourseWare can also visualise their results
 
 p.
-  Look at them, try them, examine the package and all the information you can find in the text above.
-  Because this intro page is not only introcuction to the course but also documentation and style galery, so enjoy :)
+  Look at them, try to solve them, examine the package and all the information you can find in the text above.
+  Because this intro page is not only introcuction to the course but style galery, so enjoy :)
 
 h2 Structure
 p.
@@ -38,7 +39,7 @@ p Structure then can look like this
 
 snippet.
   |- 01-simple-generator
-  |- 02-simple-generator-with-tests
+  |- 02-generator-with-tests
   |  |- complete
   |  |  |- app.js
   |  |  |- index.html
@@ -71,7 +72,7 @@ snippet
       "todoFilePath": "complete/todo.jade",
       "todos": [
         "01-simple-generator",
-        "02-simple-generator-with-tests"
+        "02-generator-with-tests"
       ]
     }
 
@@ -519,4 +520,27 @@ ul
     | or location of configFile, this is crucial for IDE integration which sometimes cover the original configFile
   snippet.
     var exerciseName = courseware.determineExerciseName(config); // 01-simple-generator
+
+h2 Development of your materials
+
+p.
+  Now you know almost everything about CourseWare. One thing about devalopment your materials is missing.
+  You can start development server with command
+
+snippet.
+  npm run devel
+
+p The command will start server, watch all your exercises and files with instruction and provide livereload capability.
+  ul
+    li in this package all #[strong */complete/todo] and #[strong courseware-intro.jade]
+
+p. The server runs on the url
+
+snippet.
+  http://localhost:8080
+
+p.
+  So now you can try to modify exercise #[strong 03-sandbox] and examine CourseWare capabilities.
+
+
 
