@@ -7,6 +7,6 @@
     "02-generator-with-tests",
     "03-sandbox"
   ],
-  "testsSocketUrl" : "http://localhost:8000",
+  "testsSocket" : true,
   "testsResultsPath" : "test-results"
 }

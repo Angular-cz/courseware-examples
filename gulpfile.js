@@ -6,7 +6,7 @@ var courseware = require('angular-cz-courseware');
 var config = {
   httpServer: {
     host: 'localhost',
-    port: 8000
+    port: process.env.PORT || 8000
   }
 };
 gulp.task('connect', ['initialize-tests'], function(cb) {
