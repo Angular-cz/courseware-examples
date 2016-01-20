@@ -28,10 +28,6 @@
     "phantomjs": "^1.9.19",
     "serve-static": "^1.10.0"
   },
-  "dependencies": {
-    "karma-json-all-reporter": "^0.1.1",
-    "karma-json-reporter": "^1.2.0"
-  },
   "engines": {
     "node": "4.x"
   }
