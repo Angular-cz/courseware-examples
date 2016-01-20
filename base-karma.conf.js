@@ -14,8 +14,7 @@ module.exports = function(config) {
     plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine',
-      'karma-story-reporter',
-      'karma-json-all-reporter'
+      'karma-story-reporter'
     ],
 
     reporters: ['story'],
@@ -36,7 +35,6 @@ module.exports = function(config) {
   // reporter which is needed for courseware
   config.plugins.push('karma-spec-json-reporter');
   config.reporters.push('specjson');
-  config.reporters.push('json-all');
 
   var courseware = require("angular-cz-courseware");
 
@@ -54,10 +52,6 @@ module.exports = function(config) {
 
   config.specjsonReporter = {
     outputFile: outPath
-  };
-
-  config.jsonAllReporter= {
-    outputFile: outPath + '-all', // results will be saved as json-all-results.json
   };
 
 };
