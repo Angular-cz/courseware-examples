@@ -2,6 +2,9 @@
 
 This repository contains DEMO exercises which utilize CourseWare - https://github.com/Angular-cz/courseware
 
+[![Dependency Status](https://david-dm.org/Angular-cz/courseware-examples.png)](https://david-dm.org/Angular-cz/courseware-examples) 
+[![devDependency Status](https://david-dm.org/Angular-cz/courseware-examples/dev-status.png)](https://david-dm.org/Angular-cz/courseware-examples#info=devDependencies)
+
 ## Instalation
 
 Clone this repository
