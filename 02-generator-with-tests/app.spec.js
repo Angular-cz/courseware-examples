@@ -20,9 +20,10 @@ describe('generator with 0 as initialValue', function() {
   });
 
   it('return incremented values as next (TODO 2.2)', function() {
-    expect(this.generator()).toBe(0);
-    expect(this.generator()).toBe(1);
-    expect(this.generator()).toBe(2);
+    var generatedValue = this.generator();
+
+    expect(this.generator()).toBe(generatedValue+1);
+    expect(this.generator()).toBe(generatedValue+2);
   });
 
 });
