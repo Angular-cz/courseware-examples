@@ -16,7 +16,7 @@
   "author": "angular@angular.cz",
   "license": "ISC",
   "devDependencies": {
-    "angular-cz-courseware": "^0.1.0",
+    "angular-cz-courseware": "^0.2.1",
     "bootstrap": "^3.3.6",
     "connect": "^3.4.0",
     "gulp": "^3.9.0",
@@ -24,7 +24,7 @@
     "karma": "^0.13.19",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^1.0.0",
-    "karma-spec-json-reporter": "0.0.8",
+    "karma-spec-json-reporter": "git+https://github.com/Angular-cz/karma-spec-json-reporter.git",
     "karma-story-reporter": "^0.3.1",
     "phantomjs": "^2.1.2",
     "serve-static": "^1.10.0"

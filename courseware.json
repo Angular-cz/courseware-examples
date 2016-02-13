@@ -4,7 +4,8 @@
   "todoFilePath": "complete/todo.jade",
   "todos": [
     "01-simple-generator",
-    "02-generator-with-tests"
+    "02-generator-with-tests",
+    "03-sandbox"
   ],
   "testsSocket" : true,
   "testsResultsPath" : "test-results"
