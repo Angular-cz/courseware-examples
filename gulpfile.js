@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var connect = require('connect');
 var serveStatic = require('serve-static');
-var courseware = require('angular-cz-courseware');
+var courseware = require('courseware');
 
 var config = {
   httpServer: {

@@ -364,19 +364,19 @@ snippet.
   tests
 
 div(ng-if="true",ng-init='tests = {"results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
-  include node_modules/angular-cz-courseware/jade/directives/tests
+  include node_modules/courseware/jade/directives/tests
 
 snippet.
   tests(todo="1")
 
 div(ng-if="true",ng-init='tests = {"results": { "total": 1, "passed": 0, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "FAILED" } ] } }')
-  include node_modules/angular-cz-courseware/jade/directives/tests
+  include node_modules/courseware/jade/directives/tests
 
 snippet.
   tests(todo="2")
 
 div(ng-if="true",ng-init='tests = {"results": { "total":3, "passed": 0, "tests": [ { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
-  include node_modules/angular-cz-courseware/jade/directives/tests
+  include node_modules/courseware/jade/directives/tests
 div.note
   | By default, todos are selected as hierarchy.
   snippet.
@@ -398,7 +398,7 @@ snippet.
   tests-results
 
 div(ng-if="true",ng-init='tests = {"showTests": true, "results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
-  include node_modules/angular-cz-courseware/jade/directives/tests-results
+  include node_modules/courseware/jade/directives/tests-results
 
 p Tests can be hidden by using attribute #[strong title-only]
 
@@ -406,7 +406,7 @@ snippet.
   tests-results(title-only)
 
 div(ng-if="true",ng-init='tests = {"showTests": false, "results": { "total": 4, "passed": 1} }')
-  include node_modules/angular-cz-courseware/jade/directives/tests-results
+  include node_modules/courseware/jade/directives/tests-results
 
 h3 Test results reports
 
@@ -493,7 +493,7 @@ snippet.
       config.plugins.push('karma-spec-json-reporter');
       config.reporters.push('specjson');
 
-      var courseware = require("angular-cz-courseware");
+      var courseware = require("courseware");
 
       // ensure that directory exists
       var testResultsDir = courseware.getTestResultsDir();
