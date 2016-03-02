@@ -1,6 +1,6 @@
 {
   "name": "courseware-exercises",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "examples for tool courseware",
   "main": "index.js",
   "scripts": {
