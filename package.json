@@ -18,7 +18,7 @@
   "devDependencies": {
     "bootstrap": "^3.3.6",
     "connect": "^3.4.1",
-    "courseware": "^0.4.1",
+    "courseware": "^0.4.4",
     "gulp": "^3.9.1",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.21",
