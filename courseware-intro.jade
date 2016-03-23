@@ -363,7 +363,7 @@ p.
 snippet.
   tests
 
-div(ng-if="true",ng-init='tests = {"results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
+div(ng-if="true",ng-init='tests = {"results": { "total": 4, "passed": 0, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
   include node_modules/courseware/jade/directives/tests
 
 snippet.
@@ -390,6 +390,16 @@ div.note
   snippet.
     tests(without-todo)    # displays tests with (TODO 2)
 
+h3 tests-exists
+p.
+  You can check existence of some test
+
+snippet.
+  tests-exists(todo="3.1")
+
+div(ng-if="true",ng-init='tests = {"results": { "tests": [] } }')
+  include node_modules/courseware/jade/directives/tests-exists
+
 h3 tests-results
 p.
   #[strong Tests-results] component is intended for displaying summary. By default it shows all tests
@@ -397,7 +407,7 @@ p.
 snippet.
   tests-results
 
-div(ng-if="true",ng-init='tests = {"showTests": true, "results": { "total": 4, "passed": 1, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
+div(ng-if="true",ng-init='tests = {"showTests": true, "results": { "total": 4, "passed": 0, "tests": [ { "name": "generatorFactory is a function (TODO 1)", "type": "PASSED" }, { "name": "generatorFactory return function when call (TODO 2.1)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return 0 as first value (TODO 2.2)", "type": "FAILED" }, { "name": "generator with 0 as initialValue return incremented values as next (TODO 2.2)", "type": "FAILED" } ] } }')
   include node_modules/courseware/jade/directives/tests-results
 
 p Tests can be hidden by using attribute #[strong title-only]
